@@ -1,12 +1,18 @@
 import supabase from '@/utils/supabase'
 
-export default defineEventHandler(async () => {
+export default defineEventHandler(async (event) => {
+    const body = await readBody(event)
     const { data, error } = await supabase.auth.signUp({
-        email: 'someone@email.com',
-        password: 'xOFCZsgtgXGNoiOgNkfM',
+        email: body.email,
+        password: body.password,
     })
     console.log({
+        body,
         data,
         error,
     })
+    return {
+        data,
+        error,
+    }
 })
