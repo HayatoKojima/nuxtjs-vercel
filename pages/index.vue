@@ -3,7 +3,6 @@ const { data: todos, pending, error, refresh } = await useFetch('/api/todos')
 const statusText = (isCompleted: boolean) => (isCompleted ? 'Yes' : 'No')
 </script>
 <template>
-    <NuxtLink to="/signup">sign up </NuxtLink>
     <div class="todo-table">
         <div>ID</div>
         <div>Name</div>
@@ -16,7 +15,6 @@ const statusText = (isCompleted: boolean) => (isCompleted ? 'Yes' : 'No')
             <div>{{ todo.created_at }}</div>
         </template>
     </div>
-
     <!-- <div>
         <label>
             <span> todo name: </span>

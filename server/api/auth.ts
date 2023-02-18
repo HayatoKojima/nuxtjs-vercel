@@ -1,0 +1,9 @@
+import supabase from '@/utils/supabase'
+
+export default defineEventHandler(async (event) => {
+    const data = await supabase.auth.getUser(
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNjc2NjkxNTAzLCJzdWIiOiJhOTc1ZTVkMC1iYTUxLTQ5ZGQtYTIwYy1hY2U1YTRjYTRlODYiLCJlbWFpbCI6Im1hamlrbzI2Mjdrb2ppbWFAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJlbWFpbCIsInByb3ZpZGVycyI6WyJlbWFpbCJdfSwidXNlcl9tZXRhZGF0YSI6e30sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoicGFzc3dvcmQiLCJ0aW1lc3RhbXAiOjE2NzY2ODc5MDN9XSwic2Vzc2lvbl9pZCI6ImNjOTRkNjQwLTk5N2UtNGQxZi1iMjk2LWZlMTljNWE3ZWYzZiJ9.2Xo1wbs6qLMShqxUPY4hrY-FhzSFOo5g3q-MQiWSJ0M'
+    )
+    console.log(data)
+    return data
+})
