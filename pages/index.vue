@@ -1,8 +1,15 @@
 <script lang="ts" setup>
+definePageMeta({
+    middleware: ['auth'],
+})
 const { data: todos, pending, error, refresh } = await useFetch('/api/todos')
 const statusText = (isCompleted: boolean) => (isCompleted ? 'Yes' : 'No')
+const { logout } = useAuth()
 </script>
 <template>
+    <div>
+        <button @click="logout">log out</button>
+    </div>
     <div class="todo-table">
         <div>ID</div>
         <div>Name</div>
@@ -15,13 +22,6 @@ const statusText = (isCompleted: boolean) => (isCompleted ? 'Yes' : 'No')
             <div>{{ todo.created_at }}</div>
         </template>
     </div>
-    <!-- <div>
-        <label>
-            <span> todo name: </span>
-            <input type="text" v-model="todoName" />
-            <button @click="addTodo">Add</button>
-        </label>
-    </div> -->
 </template>
 <style lang="scss" scoped>
 .todo-table {

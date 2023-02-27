@@ -1,4 +1,7 @@
 <script lang="ts" setup>
+definePageMeta({
+    middleware: ['unauth'],
+})
 const { email, password, signUp } = useAuth()
 </script>
 <template>

@@ -1,9 +1,8 @@
 <script lang="ts" setup>
+definePageMeta({
+    middleware: ['unauth'],
+})
 const { email, password, login } = useAuth()
-const auth = async () => {
-    const data = await $fetch('/api/auth')
-    console.log(data)
-}
 </script>
 <template>
     <div>
@@ -21,9 +20,6 @@ const auth = async () => {
         </div>
         <div>
             <button @click="login">Login</button>
-        </div>
-        <div>
-            <button @click="auth">auth</button>
         </div>
         <div>
             <NuxtLink to="/signup">Sign Up</NuxtLink>

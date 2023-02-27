@@ -19,11 +19,19 @@ export const useAuth = () => {
                 password: password.value,
             },
         })
+
         if (error === null) {
             // ログインに成功するとアクセストークンが返ってくるのでCookieに格納
             useCookie<string>('todo-app-access-token').value = data.session!.access_token
             navigateTo('/')
         }
     }
-    return { email, password, signUp, login }
+    const logout = () => {
+        // アクセストークンを削除してログインページに戻る
+        const accessToken = useCookie('todo-app-access-token')
+        accessToken.value = null
+        navigateTo('/login')
+    }
+
+    return { email, password, signUp, login, logout }
 }
